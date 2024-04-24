@@ -1,0 +1,26 @@
+# .gitlab-ci.yml
+
+# 定义一个名为 "build" 的作业
+build:
+  # 使用 Node.js 官方镜像作为运行环境
+  image: node:lastest
+
+  # 作业执行的脚本命令
+  script:
+    # 安装 pnpm
+    - npm install -g pnpm
+
+    # 使用 pnpm 安装依赖
+    - pnpm install
+
+    # 运行 npm 脚本进行构建
+    - npm run build
+
+  # 定义作业的缓存策略，以提高构建速度
+  cache:
+    # 缓存 pnpm 的依赖目录，以避免重复安装依赖
+    key: $CI_COMMIT_REF_SLUG
+    paths:
+      - node_modules/
+
+# 添加其他作业或配置
