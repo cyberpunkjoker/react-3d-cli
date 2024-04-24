@@ -7,8 +7,14 @@ build:
 
   # 作业执行的脚本命令
   script:
-    # 安装 pnpm
-    - npm install -g pnpm
+      # 检查是否已经存在全局的 pnpm 缓存
+    - |
+      if [ ! -d /cache/pnpm-store ]; then
+        npm install -g pnpm
+        pnpm config set store-dir /cache/pnpm-store
+      else
+        echo "Using cached pnpm store"
+      fi
 
     # 使用 pnpm 安装依赖
     - pnpm install
@@ -21,6 +27,7 @@ build:
     # 缓存 pnpm 的依赖目录，以避免重复安装依赖
     key: $CI_COMMIT_REF_SLUG
     paths:
+      - /cache/pnpm-store/
       - node_modules/
 
 # 添加其他作业或配置
