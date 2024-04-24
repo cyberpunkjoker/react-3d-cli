@@ -3,7 +3,7 @@
 # 定义一个名为 "build" 的作业
 build:
   # 使用 Node.js 官方镜像作为运行环境
-  image: node:16
+  image: node:19
 
   # 作业执行的脚本命令
   script:
