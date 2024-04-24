@@ -1,5 +1,10 @@
 ## 前端小游戏开发项目
 
+[![pipeline status](https://gitlab.lazytoki.cn/Toki/Toki/badges/main/pipeline.svg)](https://gitlab.lazytoki.cn/Toki/Toki/-/commits/main)
+
+[![coverage report](https://gitlab.lazytoki.cn/Toki/Toki/badges/main/coverage.svg)](https://gitlab.lazytoki.cn/Toki/Toki/-/commits/main)
+
+[![Latest Release](https://gitlab.lazytoki.cn/Toki/Toki/-/badges/release.svg)](https://gitlab.lazytoki.cn/Toki/Toki/-/releases)
 #### 项目开发介绍
 主要记录一些canvas 2D游戏，可能会有一些（类ps处理的工具类）
 
