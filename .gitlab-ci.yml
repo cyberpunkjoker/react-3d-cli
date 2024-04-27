@@ -6,7 +6,6 @@ build:
   image: node:19
 
   # 作业执行的脚本命令
-pages:
   script:
       # 检查是否已经存在全局的 pnpm 缓存
     - |
@@ -22,6 +21,7 @@ pages:
 
     # 运行 npm 脚本进行构建
     - npm run build
+
   artifacts:
     paths:
       - dist
