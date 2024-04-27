@@ -6,6 +6,7 @@ build:
   image: node:19
 
   # 作业执行的脚本命令
+pages:
   script:
       # 检查是否已经存在全局的 pnpm 缓存
     - |
@@ -21,6 +22,9 @@ build:
 
     # 运行 npm 脚本进行构建
     - npm run build
+  artifacts:
+    paths:
+      - dist
 
   # 定义作业的缓存策略，以提高构建速度
   cache:
@@ -29,13 +33,3 @@ build:
     paths:
       - /cache/pnpm-store/
       - node_modules/
-
-# 添加其他作业或配置
-pages:
-  script:
-    - npm run build
-  artifacts:
-    paths:
-      - dist
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
