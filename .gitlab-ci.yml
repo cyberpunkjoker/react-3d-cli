@@ -31,3 +31,11 @@ build:
       - node_modules/
 
 # 添加其他作业或配置
+pages:
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - dist
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
