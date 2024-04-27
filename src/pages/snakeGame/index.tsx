@@ -26,11 +26,11 @@ const SnakeGame: React.FC = () => {
   }
 
   const initCanavs = () => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    [canvas.width, canvas.height] = [400, 400];
+    // const canvas = canvasRef.current;
+    // const ctx = canvas.getContext('2d');
+    // [canvas.width, canvas.height] = [400, 400];
 
-    ctx.fillStyle = 'red';
+    // ctx.fillStyle = 'red';
   }
   
   return (

@@ -15,7 +15,7 @@ const LayoutMenu: React.FC = () => {
       const { path, key } = route;
       return (
         <div key={key}>
-          {/* <Link to={path}>{menu[route.key]}</Link> */}
+          <Link to={path}>{menu[route.key]}</Link>
         </div>
       )
     })
@@ -24,7 +24,6 @@ const LayoutMenu: React.FC = () => {
 
   return (
     <div className='layoutMenu'>
-      当年的
       {renderRoutes()}
     </div>
   )
