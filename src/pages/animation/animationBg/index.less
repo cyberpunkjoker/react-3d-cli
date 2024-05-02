@@ -1,0 +1,30 @@
+.animation-wrapper {
+  .animation-bg {
+    position: relative;
+    width: 400px;
+    height: 120px;
+    border: 1px solid #ccc;
+    display: inline-flex;
+    overflow: hidden;
+    
+    .animation-all {
+      display: flex;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 100%;
+      .bg-left {
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(to right, #64eb76, #1cbcec);
+      }
+      .bg-right {
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(to right, #c1e66c, #a01cec);
+      }
+    }
+    
+  }
+}

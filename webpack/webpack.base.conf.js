@@ -42,7 +42,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              modules: true
+              modules: false
             }
           },
           // 移动端适配开启

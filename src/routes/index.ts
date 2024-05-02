@@ -12,5 +12,11 @@ export default [
     key: 'SnakeGame',
     menu: true,
     children: []
+  },
+  {
+    path: '/animation',
+    key: 'AnimationPage',
+    menu: true,
+    children: []
   }
 ] as RouterItemType[]
