@@ -16,6 +16,14 @@
 使用 pnpm 下载依赖
 
 
+使用 loadable-component 实现懒加载，hover link 时进行预加载。如果错误，直接通过最外层的 ErrorBoundary 进行捕获。
+
+
+项目优化部分
+1. 每个页面使用了懒加载方式（loadable-component 库）
+2. 在link 层 包装了 鼠标进入事件，当鼠标移入的时候 调用 preload 函数预加载组件，也可以使用 intersectionObserver 实现预加载
+3. 路由守卫
+
 
 
 ####  问题记录
@@ -77,10 +85,11 @@
     )
   }
   ```
-
+4. 尝试使用懒加载
 
 
 #### TODO_LIST
 1. gitlab ci 加上缓存等优化（待做）
-2. <del>错误边界问题添加（待做），测试错误搜集可靠程度 </del>(已完成)
+2. <del>错误边界问题添加，测试错误搜集可靠程度 </del>(已完成)
 3. 实现守卫和预加载？（待做）
+4. 如何禁用yarn 和 npm 只能使用 pnpm？（待做）·
