@@ -1,6 +1,4 @@
 import type RouterItemType from '@/types/routerType'
-import LoadingPage from '@/components/LoadingPage';
-
 import loadable from '@loadable/component'
 
 const lazyWarpper = (compPath: string) => loadable(() => import(`@/pages${compPath}`))
@@ -9,21 +7,22 @@ export default [
   {
     path: '/home',
     key: 'Home',
-    component: lazyWarpper('/home'),
+    Component: lazyWarpper('/home'),
     menu: true,
+    authKey: 'test-key',
     children: []
   },
   { 
     path: '/snakeGame',
     key: 'SnakeGame',
-    component: lazyWarpper('/snakeGame'),
+    Component: lazyWarpper('/snakeGame'),
     menu: true,
     children: []
   },
   {
     path: '/animation',
     key: 'AnimationPage',
-    component: lazyWarpper('/animation'),
+    Component: lazyWarpper('/animation'),
     menu: true,
     children: []
   }

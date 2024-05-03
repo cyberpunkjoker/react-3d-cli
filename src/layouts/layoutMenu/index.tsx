@@ -24,15 +24,14 @@ const LayoutMenu: React.FC = () => {
   const renderRoutes = () => {
     return routes.map((route: RouterItemType, index: number) => {
 
-      const { path, key, component } = route;
+      const { path, key, Component } = route;
       return (
         <div key={key}>
-          <LinkWithPreload to={path} component={component}>{menu[route.key]}</LinkWithPreload>
+          <LinkWithPreload to={path} component={Component}>{menu[route.key]}</LinkWithPreload>
         </div>
       )
     })
   }
-
 
   return (
     <div className='layoutMenu'>
