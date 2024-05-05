@@ -16,7 +16,10 @@
 使用 pnpm 下载依赖
 
 
-使用 loadable-component 实现懒加载，hover link 时进行预加载。如果错误，直接通过最外层的 ErrorBoundary 进行捕获。
+使用 loadable-component 实现懒加载，hover link 时进行预加载。如果错误，直接通过最外层的 ErrorBoundary 进行捕获，展示全局错位页并上传错误日志。
+
+
+
 
 
 项目优化部分
@@ -37,7 +40,7 @@
   - 路由懒加载，使用lazy 包裹组件，在组件内部使用Suspense 包裹异步加载的组件。
   - 尝试使用了一下利用 返回 promise pending 状态实现请求的 loading 效果。代码如下。
     先说结论（效果不好，只能用于数据展示，涉及增删操作目前尝试无法实现）
-  ```js
+  ```jsx
   /**
   *  1. 初始化：查询数据，抛出 promise
   *  2. 加载中: 直接抛出 promise
@@ -81,7 +84,7 @@
     let data = fnDataGet()
 
     return (
-        <p>{data}</p>
+      <p>{data}</p>
     )
   }
   ```
@@ -91,5 +94,6 @@
 #### TODO_LIST
 1. gitlab ci 加上缓存等优化（待做）
 2. <del>错误边界问题添加，测试错误搜集可靠程度 </del>(已完成)
-3. 实现守卫和预加载？（待做）
+3. <del>实现守卫和预加载？</del>（已完成）
 4. 如何禁用yarn 和 npm 只能使用 pnpm？（待做）·
+5. 加入测试单元对公共组件进行测试（待做）

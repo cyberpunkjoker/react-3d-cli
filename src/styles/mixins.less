@@ -1,0 +1,38 @@
+@import '@/styles/variables.less';
+
+// 骨架屏加载动画
+.ske-loading( @w: 100%, @h: 100%, @bg-color : @ske-bg-color,) {
+  content: "";
+  width: @w;
+  height: @h;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 60%
+  ) @bg-color;
+  background-size: 200% 100%;
+  background-position: 100% 50%;
+  background-position-x: 180%;
+  animation: 1.5s _ske_loading ease-in-out infinite;
+
+  @keyframes _ske_loading {
+    to {
+      background-position-x: -20%;
+    }
+  }
+}
+
+//  多列网格 loading 效果
+.loading-grid(@ratio: 16 / 9, @min: 260px) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(@min, 1fr));
+  grid-gap: 10px;
+
+  .loading-grid-item {
+    position: relative;
+    border-radius: 10px;
+    aspect-ratio: @ratio;
+    .ske-loading(100%, 100%, #eee);
+  }
+}

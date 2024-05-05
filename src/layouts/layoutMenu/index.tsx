@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, matchPath } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import routes from '@/routes';
 import locales from '@/locales';
 import '../index.less';

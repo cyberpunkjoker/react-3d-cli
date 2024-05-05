@@ -10,7 +10,6 @@ const AnimationBg: React.FC = () => {
   const moverPerTimes = 10;
   const moveTimes = 20
 
-
   useEffect(() => {
     // TODO: 加个限流
     const handleResize = () => {
