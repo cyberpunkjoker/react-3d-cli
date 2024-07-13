@@ -20,10 +20,25 @@ export default [
     children: []
   },
   {
+    path: '/treasureHunter',
+    key: 'TreasureHunter',
+    Component: lazyWarpper('/treasureHunter'),
+    menu: true,
+    children: []
+  },
+  {
     path: '/animation',
     key: 'AnimationPage',
     Component: lazyWarpper('/animation'),
     menu: true,
     children: []
+  },
+  {
+    path: '/panorama',
+    key: 'panorama',
+    Component: lazyWarpper('/panorama'),
+    menu: true,
+    children: []
+  },
   }
 ] as RouterItemType[]

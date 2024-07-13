@@ -8,7 +8,6 @@ import './index.less';
 const AnimationPage: React.FC = () => {
   return (
     <div className='animation-container'>
-     
       <LoadingSkeleton num={10}/>
       <VideoLoading videoUrl='https://www.w3schools.com/html/mov_bbb.mp4'/>
       <AnimationBg />

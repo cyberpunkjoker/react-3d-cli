@@ -21,6 +21,7 @@
   "dependencies": {
     "@loadable/component": "^5.16.4",
     "@types/loadable__component": "^5.13.9",
+    "pixi.js": "^8.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3"

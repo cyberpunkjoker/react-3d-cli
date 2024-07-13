@@ -9,5 +9,7 @@ declare module '*.less' {
 declare module '*.png';
 
 declare type Dict = {
-  [key: string]: any
+  [key: string]: U;
 }
+ 
+declare type DictLimit<T> = Dict & T;
