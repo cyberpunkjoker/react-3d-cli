@@ -17,7 +17,7 @@ const CDNPath = isDev
 module.exports = {
   entry: './src/index.tsx',
   output: {
-    publicPath: CDNPath,
+    // publicPath: CDNPath,
     path: path.resolve(__dirname, '../dist'),
     filename: isDev ? '[name].js' : '[name]-[chunkhash].js',
     chunkFilename: isDev ? '[name].js' : '[name]-[contenthash:8].js',
