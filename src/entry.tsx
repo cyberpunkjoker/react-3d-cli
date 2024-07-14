@@ -12,7 +12,6 @@ const App: React.FC = () => {
   return (
     <ErrorBoundary>
       <div>
-        <h1>Hello World - canvas demo pages</h1>
         <Layout></Layout>
       </div>
     </ErrorBoundary>

@@ -40,5 +40,4 @@ export default [
     menu: true,
     children: []
   },
-  }
 ] as RouterItemType[]
