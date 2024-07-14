@@ -7,16 +7,18 @@ import { setSesionStorage, getSesionStorage, SessionEnum } from "@/storage/sessi
 const { Dragger } = Upload;
 
 interface UploadCompProps {
-  setUrl: (url: string) => void
+  setUrl: (url: string) => void;
+  /**本地，不走oss */
+  local?: boolean;
 }
 
 const UploadComp: React.FC<UploadCompProps> = (props) => {
-  const { setUrl } = props
+  const { setUrl, local= true } = props
   const [token, setToken] = React.useState('')
 
   useEffect(() => {
     const ossToken = getSesionStorage(SessionEnum.OSS_TOKEN)
-    if (!ossToken) {
+    if (!ossToken && !local) {
       initOss()
     }
   }, [])
@@ -27,8 +29,24 @@ const UploadComp: React.FC<UploadCompProps> = (props) => {
     setSesionStorage(SessionEnum.OSS_TOKEN, res.data.token)
   }
 
+  const blobToBase64 = async (blob: Blob) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.addEventListener('load', ()=> {
+        resolve(reader.result);
+      });
+      reader.readAsDataURL(blob);
+    })
+  }
+
   const customRequest = async (e: any) => {
-    
+
+    if (local) {
+      const url = await blobToBase64(e.file) as string
+      setUrl(url)
+      return
+    }
+
     uploadFile(e.file, token)
     .then((res) => {
       console.log('上传成功', res.data);
@@ -38,6 +56,7 @@ const UploadComp: React.FC<UploadCompProps> = (props) => {
     })
     .catch((err) => {
       e.onError(err);
+      initOss()
     });
   }
 

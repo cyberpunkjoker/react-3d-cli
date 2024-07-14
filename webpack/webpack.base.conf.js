@@ -9,10 +9,15 @@ const {
 
 const styleLoader = isDev ? 'style-loader' : MiniCssExtractPlugin.loader;
 
+const CDNPath = isDev 
+  ? '/'
+  : '//' + 'cyberjill.pages.lazytoki.cn/games';
+
+
 module.exports = {
   entry: './src/index.tsx',
   output: {
-    // publicPath: CDNPath,
+    publicPath: CDNPath,
     path: path.resolve(__dirname, '../dist'),
     filename: isDev ? '[name].js' : '[name]-[chunkhash].js',
     chunkFilename: isDev ? '[name].js' : '[name]-[contenthash:8].js',
