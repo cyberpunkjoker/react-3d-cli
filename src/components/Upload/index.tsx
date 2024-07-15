@@ -13,7 +13,7 @@ interface UploadCompProps {
 }
 
 const UploadComp: React.FC<UploadCompProps> = (props) => {
-  const { setUrl, local= true } = props
+  const { setUrl, local= false } = props
   const [token, setToken] = React.useState('')
 
   useEffect(() => {
