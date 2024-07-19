@@ -4,18 +4,26 @@ const useShowMenu = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   useEffect(() => {
-    // 获取query string参数
-    const query = new URLSearchParams(window.location.search);
-    // 获取showMenu参数 
-    const showMenuParam = query.get("showMenu");
+    const queryParams = getQueryParams(window.location.hash) as Dict;
 
-    if (showMenuParam === "true") {
+    if (queryParams?.showMenu === "true") {
       setShowMenu(true);
     } else {
       setShowMenu(false);
     }
-
   }, [])
+
+  const getQueryParams = (hash: string) => {
+    let queryParams = {};
+    let queryString = hash.split('?')[1];
+    if (queryString) {
+        queryString.split('&').forEach(param => {
+            let [key, value] = param.split('=');
+            queryParams[key] = decodeURIComponent(value);
+        });
+    }
+    return queryParams;
+  }
 
   return { showMenu, setShowMenu };
 }
