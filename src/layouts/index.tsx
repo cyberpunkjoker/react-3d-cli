@@ -9,7 +9,7 @@ const layouts:React.FC = () => {
 
   return (
     <div className='layoutWapper'>
-      <Router basename="/games">
+      <Router>
          { !showMenu && <LayoutMenu></LayoutMenu>}
         <LayoutContent></LayoutContent>
       </Router>
