@@ -6,12 +6,16 @@ const Panorama: React.FC = () => {
   const [uploadUrl, setUploadUrl] = useState('');
 
   useEffect(() => {
+
+  }, [])
+  useEffect(() => {
+
     if (uploadUrl) {
       pannellumViewer();
     }
   }, [uploadUrl])
 
-  const pannellumViewer = async() => {
+  const pannellumViewer = async () => {
     new (window as any).pannellum.viewer('viewer', {
       "type": "equirectangular",
       "panorama": uploadUrl
@@ -20,8 +24,8 @@ const Panorama: React.FC = () => {
 
   return (
     <>
-     <UploadComp setUrl={setUploadUrl}></UploadComp>
-     <div id='viewer' style={{width: '80vw', height: '80vh'}}></div>
+      <UploadComp setUrl={setUploadUrl}></UploadComp>
+      <div id='viewer' style={{ width: '80vw', height: '80vh' }}></div>
     </>
   )
 }

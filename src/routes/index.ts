@@ -12,7 +12,7 @@ export default [
     authKey: 'test-key',
     children: []
   },
-  { 
+  {
     path: '/snakeGame',
     key: 'SnakeGame',
     Component: lazyWarpper('/snakeGame'),
@@ -40,4 +40,11 @@ export default [
     menu: true,
     children: []
   },
+  {
+    path: '/showModels',
+    key: 'showModels',
+    Component: lazyWarpper('/showModels'),
+    menu: true,
+    children: []
+  }
 ] as RouterItemType[]

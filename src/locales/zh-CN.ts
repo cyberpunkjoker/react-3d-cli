@@ -4,4 +4,5 @@ export const menu = {
   'AnimationPage': '动画合集页',
   'TreasureHunter': "宝藏猎人",
   'panorama': '全景',
+  'showModels': '3D模型展示',
 }

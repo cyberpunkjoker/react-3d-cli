@@ -8,7 +8,7 @@ const App: React.FC = () => {
   useEffect(() => {
 
   }, [])
-  
+
   return (
     <ErrorBoundary>
       <div>
