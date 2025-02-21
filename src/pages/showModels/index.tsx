@@ -87,6 +87,7 @@ const ShowModels: FC = () => {
         modelList.map((modelInfo, index) => {
           return (
             <Viewer3D
+              className="w-full h-[25rem]"
               key={index}
               modelInfo={modelInfo}
             />

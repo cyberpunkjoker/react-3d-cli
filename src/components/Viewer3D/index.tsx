@@ -1,12 +1,14 @@
 import { ModelInfoProps, ModelViewer } from "@/utils/models/models";
+import classNames from "classnames";
 import React, { FC, useEffect, useRef } from "react";
 
 interface Viewer3DProps {
   modelInfo: ModelInfoProps;
+  className?: string;
 }
 
 const Viewer3D: FC<Viewer3DProps> = (props) => {
-  const { modelInfo } = props
+  const { modelInfo, className } = props
   const viewerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -15,7 +17,8 @@ const Viewer3D: FC<Viewer3DProps> = (props) => {
   }, [])
 
   return (
-    <div style={{ width: '100%', height: '400px' }} ref={viewerRef}></div>
+    <div className={classNames([className])} ref={viewerRef}>
+    </div>
   )
 }
 
