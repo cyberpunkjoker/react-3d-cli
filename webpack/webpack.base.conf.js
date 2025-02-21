@@ -63,6 +63,11 @@ module.exports = {
         test: /\.(png|jpg|jpeg|gif|woff|svg|eot|ttf)$/,
         type: 'asset/resource',
       },
+      {
+        // 使用 raw-loader 来加载 GLSL 文件
+        test: /\.glsl$/,
+        use: 'raw-loader',  
+      }
     ],
   },
   resolve: {
