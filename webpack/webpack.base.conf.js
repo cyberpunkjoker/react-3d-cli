@@ -66,7 +66,7 @@ module.exports = {
       {
         // 使用 raw-loader 来加载 GLSL 文件
         test: /\.glsl$/,
-        use: 'raw-loader',  
+        use:['raw-loader', 'glslify-loader'],  
       }
     ],
   },

@@ -1,6 +1,7 @@
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import * as THREE from 'three';
+import { ModelInfoProps } from './models';
 
 type ModelType = THREE.FBX | THREE.glb;
 
@@ -19,7 +20,7 @@ export class LoadModel {
   constructor(
     private modelUrl: string,
     private textureUrl?: string,
-    private zoom?: number,
+    private modelInfo?: ModelInfoProps,
   ) {
   }
 
@@ -40,13 +41,35 @@ export class LoadModel {
   }
 
   centerModel(fbx: ModelType) {
-    if (this.zoom) {
-      fbx.scale.set(this.zoom, this.zoom, this.zoom);
+    const { zoom, modelRotation, modelPosition } = this.modelInfo || {};
+
+    if (zoom) {
+      fbx.scale.set(zoom, zoom, zoom);
     }
+
+    if (modelRotation) {
+      const { x, y, z } = modelRotation;
+      fbx.rotation.x = x || 0;
+      fbx.rotation.y = y || 0;
+      fbx.rotation.z = z || 0;
+    }
+
 
     const boundingBox = new THREE.Box3().setFromObject(fbx);
     const center = boundingBox.getCenter(new THREE.Vector3());
     fbx.position.sub(center);
+
+    if (modelPosition) {
+      const box = new THREE.Box3();
+      const {
+        max: { x, y, z },
+      } = box.expandByObject(fbx)
+
+      const { x: opx = 0, y: opy = 0, z: opz = 0 } = modelPosition || {};
+      fbx.position.x = x * opx;
+      fbx.position.y = y * opy;
+      fbx.position.z = z * opz;
+    }
   }
 
   addModelAnimation(fbx: ModelType) {

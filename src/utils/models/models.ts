@@ -21,6 +21,8 @@ export interface ModelInfoProps {
   exposure?: number | null;
   zoom?: number;
   ambientLightIntensity?: number;
+  modelRotation?: CoordinateProps;
+  modelPosition?: CoordinateProps;
 }
 
 export class ModelViewer {
@@ -41,9 +43,9 @@ export class ModelViewer {
   }
 
   init() {
-    const { modelUrl, textureUrl, zoom } = this.modelInfo;
+    const { modelUrl, textureUrl } = this.modelInfo;
 
-    this.modelLoader = new LoadModel(modelUrl, textureUrl, zoom)
+    this.modelLoader = new LoadModel(modelUrl, textureUrl, this.modelInfo)
     this.scene = this.initScene()
     this.camera = this.initCamera()
     this.renderer = this.initRenderer()

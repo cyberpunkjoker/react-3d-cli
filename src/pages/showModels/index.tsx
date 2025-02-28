@@ -4,8 +4,8 @@ import cannon from "@/assets/three/cannon.png"
 import castle from "@/assets/three/castle.png"
 import { OutlineEffect } from 'three/examples/jsm/effects/OutlineEffect';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
-import vertexShader from '@/glsl/test/vertex.glsl';
-import fragmentShader from '@/glsl/test/fragment.glsl';
+import vertexShader from '@/glsl/test/vertex.vert.glsl';
+import fragmentShader from '@/glsl/test/fragment.frag.glsl';
 
 import * as THREE from 'three';
 
@@ -38,7 +38,15 @@ const modelList = [
   {
     modelUrl: '/models/good_night.FBX',
     exposure: 70,
-    zoom: 2,
+    zoom: 1.4,
+    modelRotation: {
+      y: Math.PI * 1,
+      x: Math.PI * 0.5,
+      z: Math.PI * 1,
+    },
+    modelPosition: {
+      y: -1.6
+    }
   }
 ]
 

@@ -97,3 +97,15 @@
 4. 如何禁用yarn 和 npm 只能使用 pnpm？（待做）
 5. 加入测试单元对公共组件进行测试（待做）
 6. 选择 canvas 库 实现贪吃蛇游戏（待做）
+
+
+
+## 关于 glsl 文件
+#### 两个插件   
+1. glsl lint
+  需要 在配置中加入 validate 选项，并安装 glsl-lint 包，详情见 插件说明
+2. shader languages support for vs code
+
+#### 文件命名
+- xxx.vert.glsl 顶点着色器
+- xxx.frag.glsl 片段着色器
