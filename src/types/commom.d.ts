@@ -1,0 +1,1 @@
+declare type UncertainNumberType = number | string | undefined | null 
