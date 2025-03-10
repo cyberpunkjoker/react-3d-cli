@@ -79,6 +79,7 @@ module.exports = {
   plugins: [
     new DefinePlugin({
       'process.env.profile_name': JSON.stringify(process.env.profile_name),
+      'process.env.MOCK_ENV': JSON.stringify(process.env.MOCK_ENV),
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',

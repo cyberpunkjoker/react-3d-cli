@@ -13,6 +13,15 @@ declare module "*.glsl" {
 
 declare module '*.png';
 
+declare module "*.json" {
+  const value: any;
+  export default value;
+}
+
+declare namespace globalThis {
+  var jsdom: any;
+}
+
 declare type Dict = {
   [key: string]: U;
 }

@@ -4,6 +4,8 @@
  */
 
 import type { Config } from 'jest';
+import { pathsToModuleNameMapper } from 'ts-jest'
+import { compilerOptions } from './tsconfig.json'
 
 const config: Config = {
   clearMocks: true,
@@ -14,18 +16,33 @@ const config: Config = {
 
   coverageProvider: "v8",
 
-  // 解决 Webpack 别名问题
-  moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1', // 对应 webpack 的 resolve.alias 配置
-    '\\.(css|less|scss)$': 'identity-obj-proxy', // 处理样式文件
+  testEnvironment: "jest-fixed-jsdom",
+
+  globals: {
+    'ts-jest': {
+      tsconfig: 'tsconfig.json', // 确保 ts-jest 使用正确的 tsconfig 配置
+    },
   },
+
+  moduleNameMapper: {
+    ...pathsToModuleNameMapper(compilerOptions.paths, {
+      prefix: "<rootDir>/",
+    }),
+  },
+
+  setupFilesAfterEnv: ['<rootDir>/src/__test__/jest.setup.ts'],
 
   transform: {
     // 显式指定 ts-jest 处理 TypeScript
     '^.+\\.(ts|tsx)$': 'ts-jest',
     // 其他文件用 Babel
-    '^.+\\.(js|jsx)$': 'babel-jest'
-  }
+    '^.+\\.(js|jsx)$': 'babel-jest',
+    ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
+  },
+
+  testEnvironmentOptions: {
+    customExportConditions: [''],
+  },
 };
 
 export default config;

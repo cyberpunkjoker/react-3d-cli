@@ -46,5 +46,12 @@ export default [
     Component: lazyWarpper('/showModels'),
     menu: true,
     children: []
+  },
+  {
+    path: '/test',
+    key: 'test',
+    Component: lazyWarpper('/test'),
+    menu: true,
+    children: []
   }
 ] as RouterItemType[]
