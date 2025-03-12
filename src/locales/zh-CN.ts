@@ -5,5 +5,6 @@ export const menu = {
   'TreasureHunter': "宝藏猎人",
   'panorama': '全景',
   'showModels': '3D模型展示',
+  'handleMedia': '媒体资源处理',
   'test': '测试',
 }

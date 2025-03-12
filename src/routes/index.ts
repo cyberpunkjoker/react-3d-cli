@@ -48,6 +48,13 @@ export default [
     children: []
   },
   {
+    path: '/handleMedia',
+    key: 'handleMedia',
+    Component: lazyWarpper('/handleMedia'),
+    menu: true,
+    children: []
+  },
+  {
     path: '/test',
     key: 'test',
     Component: lazyWarpper('/test'),

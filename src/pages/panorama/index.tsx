@@ -3,7 +3,7 @@ import UploadComp from '@/components/Upload';
 // import loadable from '@loadable/component';
 
 const Panorama: React.FC = () => {
-  const [uploadUrl, setUploadUrl] = useState('');
+  const [uploadUrl, setUploadUrl] = useState<string>('');
 
   useEffect(() => {
 
@@ -24,7 +24,7 @@ const Panorama: React.FC = () => {
 
   return (
     <>
-      <UploadComp setUrl={setUploadUrl}></UploadComp>
+      <UploadComp setUrl={(str) => setUploadUrl(str as string)}></UploadComp>
       <div id='viewer' style={{ width: '80vw', height: '80vh' }}></div>
     </>
   )

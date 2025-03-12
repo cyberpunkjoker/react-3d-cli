@@ -6,14 +6,22 @@ import { getTokens, uploadFile } from '@/services/upload';
 import { setSesionStorage, getSesionStorage, SessionEnum } from "@/storage/sessionStorage";
 const { Dragger } = Upload;
 
+export enum UploadCbFileType {
+  FILE = 'file',
+  URL = 'url',
+  BASE64 = 'base64',
+}
+
 interface UploadCompProps {
-  setUrl: (url: string) => void;
+  setUrl: (url: string | File) => void;
   /**本地，不走oss */
   local?: boolean;
+  /**返回文件类型 */
+  cbFileType?: 'file' | 'url' | 'base64';
 }
 
 const UploadComp: React.FC<UploadCompProps> = (props) => {
-  const { setUrl, local= false } = props
+  const { setUrl, local = false, cbFileType = 'base64' } = props
   const [token, setToken] = React.useState('')
 
   useEffect(() => {
@@ -32,32 +40,44 @@ const UploadComp: React.FC<UploadCompProps> = (props) => {
   const blobToBase64 = async (blob: Blob) => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
-      reader.addEventListener('load', ()=> {
+      reader.addEventListener('load', () => {
         resolve(reader.result);
       });
       reader.readAsDataURL(blob);
     })
   }
 
+
+
   const customRequest = async (e: any) => {
+    console.log('origin picture size', e.file.size);
 
     if (local) {
-      const url = await blobToBase64(e.file) as string
-      setUrl(url)
+      switch (cbFileType) {
+        case UploadCbFileType.BASE64:
+          const url = await blobToBase64(e.file) as string
+          setUrl(url)
+          break;
+        case UploadCbFileType.FILE:
+          setUrl(e.file)
+        default:
+          break;
+      }
+
       return
     }
 
     uploadFile(e.file, token)
-    .then((res) => {
-      console.log('上传成功', res.data);
-      e.onSuccess(res.data, e);
-      const url = res.data.links.url
-      setUrl(url)
-    })
-    .catch((err) => {
-      e.onError(err);
-      initOss()
-    });
+      .then((res) => {
+        console.log('上传成功', res.data);
+        e.onSuccess(res.data, e);
+        const url = res.data.links.url
+        setUrl(url)
+      })
+      .catch((err) => {
+        e.onError(err);
+        initOss()
+      });
   }
 
   const uploadProps: UploadProps = {
@@ -80,7 +100,7 @@ const UploadComp: React.FC<UploadCompProps> = (props) => {
       console.log('Dropped files', e.dataTransfer.files);
     },
   };
-  
+
   return (
     <Dragger {...uploadProps}>
       <p className="ant-upload-drag-icon">
