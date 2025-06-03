@@ -60,5 +60,13 @@ export default [
     Component: lazyWarpper('/test'),
     menu: true,
     children: []
-  }
+  },
+  {
+    path: '/space',
+    key: 'space',
+    Component: lazyWarpper('/space'),
+    menu: true,
+    children: []
+  },
+
 ] as RouterItemType[]

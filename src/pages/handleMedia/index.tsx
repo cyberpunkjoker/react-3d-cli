@@ -1,9 +1,11 @@
 import UploadComp, { UploadCbFileType } from "@/components/Upload";
 import { useImageResizer } from "@/hooks/handleMedia/useResizeImg";
+import { getWavMetadata } from "@/utils/handleMuisc";
 import React, { FC, useEffect, useRef, useState } from "react";
 
 const HandleMedia: FC = () => {
   const [compressFile, setcompressFile] = useState<string | File>();
+  const [wavformFile, setwavformFile] = useState<string | File>();
 
   const { resizedFile, resizeImageToTargetSize } = useImageResizer();
 
@@ -15,6 +17,11 @@ const HandleMedia: FC = () => {
     resizeImageToTargetSize(compressFile, 10)
   }, [compressFile])
 
+
+  useEffect(() => {
+    if (!wavformFile) return;
+    getWavMetadata(wavformFile as File)
+  }, [wavformFile])
 
   return (
     <div>
@@ -35,7 +42,12 @@ const HandleMedia: FC = () => {
         )
       }
 
-
+      <h1>Handle Miuse MetaData</h1>
+      <UploadComp
+        local
+        cbFileType="file"
+        setUrl={setwavformFile}
+      ></UploadComp>
     </div>
   )
 }
