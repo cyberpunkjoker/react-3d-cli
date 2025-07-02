@@ -20,8 +20,6 @@
 
 
 
-
-
 项目介绍
 1. 每个页面使用了懒加载方式（loadable-component 库）
 2. 在link 层 包装了 鼠标进入事件，当鼠标移入的时候 调用 preload 函数预加载组件，也可以使用 intersectionObserver 实现预加载
@@ -108,4 +106,4 @@
 
 #### 文件命名
 - xxx.vert.glsl 顶点着色器
-- xxx.frag.glsl 片段着色器
+- xxx.frag.glsl 片段着色器  
