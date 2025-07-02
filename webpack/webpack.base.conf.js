@@ -64,6 +64,11 @@ module.exports = {
         type: 'asset/resource',
       },
       {
+        test: /\.py$/,
+        type: 'asset/source',
+        include: path.resolve('src/scripts'),
+      },
+      {
         // 使用 raw-loader 来加载 GLSL 文件
         test: /\.glsl$/,
         use:['raw-loader', 'glslify-loader'],  
@@ -71,9 +76,9 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.py'],
     alias: { 
-      "@": path.resolve("src") 
+      "@": path.resolve("src")
     },
   },
   plugins: [

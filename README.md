@@ -26,6 +26,10 @@
 3. 路由守卫 使用 baseCard 包装， 基础ui布局和 公共逻辑都可在改组件中添加（能获取到全部路由信息）
 
 
+##### wasm
+- 项目支持使用 python 打包wasm 进行大数据量运算
+- python 文件位置为 src/scripts/python 
+- 使用脚本 pyodide，该脚本npm 包为 node版本，需要使用 cdn 引入，可看模板 html 文件 (脚本主要功能将 py 转换成 wasm 文件)
 
 ####  问题记录
 1. **网页展示的内容`jsx`部分被编译过了** 

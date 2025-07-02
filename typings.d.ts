@@ -11,6 +11,11 @@ declare module "*.glsl" {
   export default value;
 }
 
+declare module "*.py" {
+  const content: string;
+  export default content;
+}
+
 declare module '*.png';
 
 declare module "*.json" {
@@ -20,6 +25,7 @@ declare module "*.json" {
 
 declare namespace globalThis {
   var jsdom: any;
+  var loadPyodide: any;
 }
 
 declare type Dict = {
